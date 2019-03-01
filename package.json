@@ -1,7 +1,7 @@
 {
   "name": "artifact-tracer",
   "description": "",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/feathersjs/artifact-tracer",
   "main": "lib/",
   "keywords": [

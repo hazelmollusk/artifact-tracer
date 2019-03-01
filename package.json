@@ -1,22 +1,21 @@
 {
   "name": "artifact-tracer",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/feathersjs/artifact-tracer",
   "main": "lib/",
   "keywords": [
     "feathers",
     "feathers-plugin"
   ],
-  "license": "MIT",
+  "license": "Proprietary; SEE LICENSE",
   "repository": {
     "type": "git",
     "url": "git://github.com/feathersjs/artifact-tracer.git"
   },
   "author": {
-    "name": "Feathers contributors",
-    "email": "hello@feathersjs.com",
-    "url": "https://feathersjs.com"
+    "name": "Matt Barry",
+    "email": "matt@hazelmollusk.org"
   },
   "contributors": [],
   "bugs": {

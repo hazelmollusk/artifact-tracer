@@ -1,7 +1,7 @@
 {
   "name": "artifact-tracer",
   "description": "",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "homepage": "https://github.com/hazelmollusk/artifact-tracer",
   "main": "lib/",
   "keywords": [

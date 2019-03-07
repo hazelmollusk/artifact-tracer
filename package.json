@@ -1,7 +1,7 @@
 {
   "name": "artifact-tracer",
   "description": "",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "homepage": "",
   "main": "lib/",
   "keywords": [

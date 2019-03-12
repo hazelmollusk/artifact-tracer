@@ -1,12 +1,17 @@
-module.exports = function(app) {
 
-  // const path = require('path');
-  // const logger = require('./logger');
+import io from 'socket.io-client';
+import socketio from '@feathersjs/socketio-client';
 
-  // const feathers = require('@feathersjs/feathers');
-  const configuration = require('@feathersjs/configuration');
+const plugin = function (app) {
 
-  const client = require('./client');
+  const path = require('path');
+  const winston = require('winston');
+  const logger = require('feathers-logger');
+  const isClient = app.get('isClient') || false;
+
+  app.configure(logger(winston));
+
+  app.log("artifactTracer loading...")
 
   const middleware = require('./middleware');
   const services = require('./services');
@@ -14,21 +19,36 @@ module.exports = function(app) {
   const channels = require('./channels');
   const mongoose = require('./mongoose');
 
-  app.configure(configuration());\
-
-  // Add logging
-  const morgan = require('morgan');
-  app.configure(log(morgan('dev', {
-    format: 'dev'
-  })));
-
-  app.info("artifactTracer loading...")
-
-  app.configure(mongoose);
-  app.configure(middleware);
   app.configure(services);
-  app.configure(channels);
-  app.hooks(appHooks);
+  if (isClient) {
 
-  app.configure(client);
+    const host = app.get('artifactTracer').server;
+    const socket = io(host, { transports: ['websocket'] });
+    app.configure(socketio(socket));
+  } else {
+    app.configure(middleware);
+    app.configure(appHooks);
+    app.configure(channels);
+    app.configure(mongoose);
+  }
+  //   if (isClient) {
+  //     const client = require('./client');
+  //     app.configure(client);
+  //   } else {
+  //   }
+  //   app.configure(middleware);
+  //   app.configure(services);
+  //   app.configure(channels);
+  //   app.hooks(appHooks);
+
+
+  //   app.set('artifactTracer', plugin);
+  // }
+
+  // // plugin.client = require('./client');
+  // // plugin.hooks = require('./hooks');
+  // // plugin.services = require('./services');
+  // // plugin.middleware = require('./middleware');
+  // // plugin.models = require('./models');
 }
+module.exports = plugin;

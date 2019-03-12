@@ -1,14 +1,10 @@
-
 module.exports = function (app) {
-    // const clientConfig = app.get('artifactTracer').client;
+  const config = app.get('artifactTracer');
 
-    // if (clientConfig) {
-    //     if (clientConfig.load == 'react') {
+  if (config.isClient) {
+    console.log('configuring artifactTracer client plugin...');
 
-            console.log('configuring artifactTracer client plugin...');
-
-            const reactPlugin = require('react');
-            app.set('artifactTracerReact', reactPlugin);
-      //  }
-    //}
-};
+    const plugin = require('./native');
+    app.get('artifactTracer').);
+  }
+}

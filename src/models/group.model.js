@@ -7,8 +7,8 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const group = new Schema({
     name: { type: String, required: true },
-    users: { type: Schema.Type.ObjectId, ref: "user" },
-    org: { type: Schema.Type.objectId, ref:"org" }
+    users: { type: Schema.Types.ObjectId, ref: "user" },
+    org: { type: Schema.Types.ObjectId, ref:"org" }
   }, {
     timestamps: true
   });

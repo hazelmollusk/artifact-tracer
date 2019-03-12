@@ -7,7 +7,6 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
   const tag = new Schema({
     text: { type: String, required: true },
-    org: { type: Schema.Type.objectId, ref="org" }
   }, {
     timestamps: true
   });

@@ -1,6 +1,9 @@
+require('babel-register')({
+  presets: [ 'env' ]
+});
 
-import io from 'socket.io-client';
-import socketio from '@feathersjs/socketio-client';
+const io = require('socket.io-client');
+const socketio = require('@feathersjs/socketio-client');
 
 const plugin = function (app) {
 
@@ -11,7 +14,7 @@ const plugin = function (app) {
 
   app.configure(logger(winston));
 
-  app.log("artifactTracer loading...")
+  app.info("artifactTracer loading...")
 
   const middleware = require('./middleware');
   const services = require('./services');
@@ -21,15 +24,15 @@ const plugin = function (app) {
 
   app.configure(services);
   if (isClient) {
-
     const host = app.get('artifactTracer').server;
     const socket = io(host, { transports: ['websocket'] });
     app.configure(socketio(socket));
   } else {
     app.configure(middleware);
-    app.configure(appHooks);
     app.configure(channels);
     app.configure(mongoose);
+    app.hooks(appHooks);
+
   }
   //   if (isClient) {
   //     const client = require('./client');

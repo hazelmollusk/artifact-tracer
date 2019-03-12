@@ -40,6 +40,8 @@
     "@feathersjs/feathers": "^3.2.3",
     "@feathersjs/socketio": "^3.2.9",
     "@feathersjs/socketio-client": "^1.2.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
     "feathers-logger": "^0.3.2",

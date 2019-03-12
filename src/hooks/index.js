@@ -1,3 +1,2 @@
-module.exports = {
-  'a': 'a'
+module.exports = function (app) {
 }

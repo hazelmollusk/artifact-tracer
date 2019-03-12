@@ -8,11 +8,16 @@ const socketio = require('@feathersjs/socketio-client');
 const plugin = function (app) {
 
   const path = require('path');
-  const winston = require('winston');
-  const logger = require('feathers-logger');
+  const logger  = require('winston');
+  const flog = require('feathers-logger');
   const isClient = app.get('isClient') || false;
 
-  app.configure(logger(winston));
+  app.configure(flog(logger));
+  if (process.env.NODE_ENV !== 'production') {
+    logger.add(new logger.transports.Console({
+      format: logger.format.simple()
+    }));
+  }
 
   app.info("artifactTracer loading...")
 

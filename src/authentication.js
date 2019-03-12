@@ -24,11 +24,6 @@ module.exports = function (app) {
     Strategy: FacebookStrategy
   }, config.facebook)));
 
-  app.configure(oauth2(Object.assign({
-    name: 'github',
-    Strategy: GithubStrategy
-  }, config.github)));
-
   // The `authentication` service is used to create a JWT.
   // The before `create` hook registers strategies that can be used
   // to create a new valid JWT (e.g. local or oauth2)
